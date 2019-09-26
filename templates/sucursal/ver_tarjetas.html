@@ -1,0 +1,80 @@
+ {% extends 'index.html' %}
+
+{% block titulo  %}
+   Lista de Tarjetas
+{% endblock titulo  %}
+
+
+{% block body  %}
+{% block ver_tarjetas %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 search">
+      <form method="get">
+        <div id="custom-search-input">
+          <div class="input-group col-md-12">
+            <input type="text" class="form-control" placeholder="Buscar..." name="buscar" value="{{ request.GET.buscar }}">
+            <span class="input-group-list">
+              <i class="icon icon-search"></i>
+              <button type="submit" class="boton-btn-success">Buscar</button>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock ver_tarjetas %}
+
+   {% if tarjetas %}
+    <table>
+       <thead>
+       	<tr>
+       		<th>#</th>
+          <th>Primer Nombre</th>
+       		<th>Segundo Nombre</th>
+          <th>Primer Apellido</th>
+          <th>Segundo Apellido</th>
+          <th>Local</th>
+          <th>Eliminar</th>
+       	</tr>
+
+       </thead>	
+       <tbody>
+       	 {% for tarjeta in tarjetas %}
+       	   <tr>
+       	   	<td>{{ tarjeta.id }}</td>
+            <td>{{ tarjeta.p_nombre }}</td>
+       	   	<td>{{ tarjeta.s_nombre }}</td>
+       	   	<td>{{ tarjeta.p_apellido }}</td>
+            <td>{{ tarjeta.s_apellido }}</td>
+            <td>{{ tarjeta.lugar.denominacion }}</td>
+            <td>
+              <a href="{% url 'sucursal:eliminar_tarjeta' tarjeta.id %}"><button type="submit">Borrar</button></a>
+            </td>
+
+
+
+
+       	   </tr>
+          {% endfor %}
+
+
+
+
+
+
+       </tbody>  
+
+    </table>
+
+
+   {% else %}
+     <h1>No existen tarjetas registradas</h1>
+   {% endif %}
+
+<a href='{% url "index" %}'>Principal</a>
+
+{% endblock body  %}
+
+

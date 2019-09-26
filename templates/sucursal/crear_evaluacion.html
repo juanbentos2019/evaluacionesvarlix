@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>creacion de evaluacion</title>
+</head>
+<body>
+	{% block body %}
+	<h1 class="titulo_pag">Ingrese una evaluacion</h1>
+	<p class="evaluacion-inicio">Para iniciar recuerde que debe ingresar un numero del 1 al 5 en cada campo de evaluacion</p>
+	<div class="form-dawn">
+	<form method="POST">
+	{% csrf_token %}
+		{{ evalua_form.as_p }}
+		<button class="button-jp" type="submit">Crear</button>	
+
+	</form>
+
+	<a href='{% url "index" %}'>Principal</a>
+    </div>
+	{% endblock body %}
+
+</body>
+</html>

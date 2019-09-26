@@ -1,0 +1,66 @@
+ {% extends 'index.html' %}
+
+{% block titulo  %}
+   Lista de Empleados
+{% endblock titulo  %}
+
+
+{% block body  %}
+
+   {% if empleados %}
+    <table>
+       <thead>
+       	<tr>
+       		<th>#</th>
+          <th>Cedula de Identidad</th>
+       		<th>Nombre</th>
+          <th>Antiguedad</th>
+          <th>Sucursal</th>
+          <th>Editar</th>
+          <th>Borrar</th>
+       	</tr>
+
+       </thead>	
+       <tbody>
+       	 {% for empleado in empleados %}
+       	   <tr>
+       	   	<td>{{ empleado.id }}</td>
+            <td>{{ empleado.cedula }}</td>
+       	   	<td>{{ empleado.nombre }}</td>
+       	   	<td>{{ empleado.antiguedad }}</td>
+            <td>{{ empleado.local_id.denominacion }}</td>
+            <td>
+              <a href="{% url 'sucursal:editar_empleado' empleado.id %}"><button type="submit">Editar</button></a></td>
+            <td>
+              <a href="{% url 'sucursal:eliminar_empleado' empleado.id %}"><button type="submit">Borrar</button></a>
+            </td>
+
+
+
+
+       	   </tr>
+          {% endfor %}
+
+
+
+
+
+
+       </tbody>  
+
+    </table>
+
+
+   {% else %}
+     <h1>No existen empleados registrados</h1>
+
+     <a href='{% url "index" %}'>Principal</a>
+
+   {% endif %}
+
+   <a href='{% url "index" %}'>Principal</a>
+
+
+{% endblock body  %}
+
+

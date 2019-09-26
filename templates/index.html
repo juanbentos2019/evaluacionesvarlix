@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block titulo %}Index{% endblock titulo %}</title>
+	<link rel="stylesheet" type="text/css" href='{% static "css/style.css" %}'>
+	<link rel="icon"  href="favicon.ico">
+	{% load bootstrap4 %}
+	{% bootstrap_css %}
+
+</head>
+<body>{% block encabezado %}
+	{% block header %}
+	<header>
+		<div class="encabezado">
+			<h2>Sistema Interno de Evaluacion e Informacion</h2>
+			<p>En este sitio se podran evaluar a los empleados, ver el stock de tarjetas prepagas de cada local entre otras opciones.</p>
+			<p>Bienvenido/a {{ user.username }}</p>
+			<p><a href="{% url 'logout' %}">Cerrar Sesion</a></p>
+
+
+		</div>
+		
+	</header>
+	{% endblock header %}
+	{% endblock encabezado %}
+
+	{% block body %}
+	<!--<h1>Sistema Interno de evaluaciones</h1>-->
+	{% block section %}
+	<div class="container">
+		<div class="box">
+			<div class="content">
+				<h6>Crear Evaluacion</h6>
+				<h3>Crear Evaluacion</h3>
+				<p>Ingrese en este espacio para crear una evaluacion de los empleados de su sucursal</p>
+				<a href='{% url "crear_evaluacion" %}'>Ingrese</a>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="box">
+			<div class="content">
+				<h6>Crear Empleado</h6>
+				<h3>Crear Empleado</h3>
+				<p>Ingrese en este espacio para crear un nuevo empleado y asi poder comenzar a realizar las evaluaciones sobre su desempeño</p>
+				<a href='{% url "crear_empleado" %}'>Ingrese</a>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="box">
+			<div class="content">
+				<h6>Ver Empleado</h6>
+				<h3>Ver Empleados</h3>
+				<p>Ingrese en este espacio para ver los empleados ingresados al sistema</p>
+				<a href='{% url "listar_empleado" %}'>Ingrese</a>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="box">
+			<div class="content">
+				<h6>Ver Evaluaciones...</h6>
+				<h3>Ver Evaluaciones realizadas</h3>
+				<p>Ingrese en este espacio para visualizar las evaluaciones realizadas</p>
+				<a href='{% url "listar_evaluacion" %}'>Ingrese</a>
+			</div>
+		</div>
+	</div>
+	<<div class="container">
+		<div class="box">
+			<div class="content">
+				<h6>Ver Locales...</h6>
+				<h3>Ver Locales Ingresados</h3>
+				<p>Ingrese en este espacio para visualizar las sucursales existentes</p>
+				<a href='{% url "listar_local" %}'>Ingrese</a>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="box">
+			<div class="content">
+				<h6>Agregar Sucursal...</h6>
+				<h3>Crear una sucursal</h3>
+				<p>Ingrese en este espacio para agregar nuevas sucursales</p>
+				<a href='{% url "crear_local" %}'>Ingrese</a>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="box">
+			<div class="content">
+				<h6>Agregar Tarjetas...</h6>
+				<h3>Ver y/o Ingresar Tarjetas</h3>
+				<p>Ingrese en este espacio para agregar tarjetas prepagas y visualizarlas</p>
+				<a href='{% url "crear_tarjeta" %}'>Ingrese</a>
+			</div>
+		</div>
+	</div>
+
+
+
+	<section>
+		
+		
+		<!--<li><a href='{% url "crear_evaluacion" %}'>Ingrese</a></li><br>
+		<li><a href='{% url "crear_empleado" %}'>Crear empleado</a></li><br>
+		<li><a href='{% url "listar_empleado" %}'>Lista de Empleados</a></li><br>
+		<li><a href='{% url "listar_evaluacion" %}'>Listado de Evaluaciones</a></li>-->
+		
+	</section>
+	{% endblock section %}
+	{% bootstrap_javascript jquery='full' %}
+	{% endblock body %}
+	{% bootstrap_javascript jquery='full' %}
+</body>
+</html>

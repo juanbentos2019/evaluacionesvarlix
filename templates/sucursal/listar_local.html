@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+{% block titulo  %}
+   Lista de Sucursales
+{% endblock titulo  %}
+	{% block body %}
+	{% if locales %}
+	<table>
+       <thead>
+       	<tr>
+       		<th>Denominacion</th>
+       		<th>Encargado</th>
+       	</tr>
+       </thead>
+       <tbody>
+       	{% for local in locales %}
+       	<tr>
+       	<td>{{ local.denominacion }}</td>
+       	<td>{{ local.encargado }}</td>
+       </tr>
+       {% endfor %}
+       </tbody>
+     </table>
+     {% else %}
+     <h1>No hay sucursales para visualizar</h1>
+    {% endif %}
+
+    <a href='{% url "index" %}'>Principal</a>
+
+    {% endblock body %}
+</body>
+</html>

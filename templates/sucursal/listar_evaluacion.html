@@ -1,0 +1,69 @@
+{% extends 'index.html' %}
+
+{% block titulo  %}
+   Evaluaciones registradas
+{% endblock titulo  %}
+
+
+{% block body  %}
+
+   {% if evaluaciones %}
+    <table>
+       <thead>
+       	<tr>
+       		<th>Empleado</th>
+       		<th>Asistencia</th>
+       		<th>Puntualidad</th>
+          <th>Buena Presencia</th>
+          <th>Orientacion/Atencion al cliente</th>
+          <th>Trabajo en equipo</th>
+          <th>Compromiso</th>
+          <th>Iniciativa</th>
+          <th>Promedio</th>
+          <th>local</th>
+          <th>Realizo la evaluacion</th>
+          
+
+       	</tr>
+
+       </thead>	
+       <tbody>
+       	 {% for evaluacion in evaluaciones  %}
+       	   <tr>
+       	   	<td>{{ evaluacion.id_evaluando }}</td>
+       	   	<td>{{ evaluacion.asistencia }}</td>
+       	   	<td>{{ evaluacion.puntualidad }}</td>
+            <td>{{ evaluacion.presencia }}</td>
+            <td>{{ evaluacion.cliente }}</td>
+            <td>{{ evaluacion.equipo }}</td>
+            <td>{{ evaluacion.compromiso }}</td>
+            <td>{{ evaluacion.iniciativa }}</td>
+            <td>{{ evaluacion.resultado }}</td>
+            <td>{{ evaluacion.id_evaluando.local_id.denominacion }}</td>
+            <td>{{ evaluacion.id_evaluando.local_id.encargado }}</td>
+          </tr>
+          {% endfor %}
+          
+
+
+
+
+
+
+       </tbody>  
+
+    </table>
+
+
+   {% else %}
+     <h1>No existen evaluaciones realizadas.</h1>
+
+     <a href='{% url "index" %}'>Principal</a>
+
+   {% endif %}
+   <a href='{% url "index" %}'>Principal</a>
+
+
+{% endblock body  %}
+
+
