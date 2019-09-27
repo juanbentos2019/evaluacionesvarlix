@@ -27,7 +27,7 @@ SECRET_KEY = '-tx$p@=!@ju79-e10v_(^!6c3n1tj=lhl3r=ot*a5z(6p0p&e='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.pythonanywhere.com']
 
 
 # Application definition
@@ -80,8 +80,16 @@ WSGI_APPLICATION = 'evaluador.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'mysql.connector.django',
+        'charset': 'utf8mb4',
+        'NAME': 'varlix_db',
+        'USER': 'root',
+        'PASSWORD': 'Coco20202020',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'OPTIONS': {
+          'autocommit': True,
+        }
     }
 }
 
